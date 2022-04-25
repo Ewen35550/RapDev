@@ -1,0 +1,383 @@
+/* ============= FONTS ============= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ============= IMPORT ============= */
+@import 'variables';
+
+/* ============= GÉNÉRAL ============= */
+*, 
+::before, 
+::after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, 
+body {
+    font-family: $poppins;
+    color: $white;
+    background-color: $background;
+    scroll-behavior: smooth;
+    user-select: none;
+    font-size: $f-text;
+    @include laptop {
+        font-size: 18px;
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul, 
+li {
+    list-style-type: none;
+}
+
+h1 {
+    font-size: $f-h1;
+    font-weight: 600;
+    margin-bottom: 30px;
+    @include laptop {
+        font-size: 48px;
+    }
+}
+
+.container {
+    padding: 30px;
+    @include tablet {
+        padding: 30px 60px;
+    }
+    @include laptop {
+        padding: 30px 100px;
+    }
+}
+
+/* ============= NAV ============= */
+nav {
+    @include display-flex(flex, center, space-between, unset);
+    height: 100px;
+    padding: 0 30px;
+    background-color: $black;
+    @include laptop {
+        padding: 0 60px;
+    }
+    .btn_nav {
+        @include display-flex(flex, center, unset, unset);
+        font-size: $f-icon-bigger;
+        i {
+            cursor: pointer;
+        }
+    }
+    h1 {
+        display: none;
+        margin: 0;
+        @include laptop {
+            display: block;
+        }
+    }
+    .link_profil {
+        position: relative;
+        .btn_profil {
+            display: block;
+            background-color: $white;
+            width: 50px;
+            height: 50px;
+            border: 4px solid $white;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+            img {
+                width: 100%;
+            }
+        }
+        .menu_profil {
+            display: none;
+            position: absolute;
+            width: 200px;
+            padding: 10px;
+            top: calc(100% + 10px);
+            right: 0;
+            background-color: $grey-2;
+            border-radius: 10px;
+            z-index: 51;
+            &.active {
+                display: block;
+            }
+            hr {
+                height: 1px;
+                border: none;
+                background-color: $white;
+                margin: 10px;
+            }
+            a {
+                display: block;
+                padding: 10px;
+                border-radius: 5px;
+                &:hover {
+                    background-color: rgba($color: $white, $alpha: 0.2);
+                }
+                i {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
+
+.menu_slide {
+    background-color: $black;
+    position: fixed;
+    @include display-flex(flex, unset, center, unset);
+    width: 100%;
+    height: calc(100vh - 100px);
+    padding-top: 60px;
+    font-size: $f-nav;
+    top: 100px;
+    left: -992px;
+    transition: all 0.5s ease-in-out;
+    z-index: 50;
+    @include laptop {
+        width: 250px;
+    }
+    &.active {
+        left: 0;
+    }
+    ul {
+        padding: 0 20px;
+        @include laptop {
+            width: 100%;
+        }
+        a {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            &:hover {
+                background-color: rgba($color: $white, $alpha: 0.2);
+            }
+            i {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+/* ============= FORM ============= */
+.form_container {
+    width: 100%;
+    height: 100vh;
+    @include display-flex(flex, center, center, unset);
+}
+
+#form_login {
+    @include display-flex(flex, center, center, column);
+    width: 90%;
+    padding: 30px;
+    margin: 0 auto;
+    background-color: $blue;
+    border-radius: 10px;
+    @include tablet {
+        width: 70%;
+    }
+    @include laptop {
+        width: 500px;
+    }
+    .form_controll {
+        width: 100%;
+        margin-bottom: 20px;
+        @include display-flex(flex, unset, center, column);
+        label {
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            font-size: $f-text;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+    }
+    .form_button {
+        width: 100%;
+        @include display-flex(flex, center, flex-end, unset);
+        a {
+            font-size: $f-smallest;
+            margin-right: 10px;
+        }
+        .btn {
+            background-color: $background;
+            color: $white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+    .error {
+        width: 100%;
+        padding: 10px;
+        background-color: $red;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+}
+
+/* ============= Rappeurs ============= */
+#form_search {
+    position: relative;
+    margin-bottom: 30px;
+    button {
+        @include display-flex(flex, center, unset, unset);
+        position: absolute;
+        top: 50%;
+        left: 30px;
+        transform: translateY(-50%);
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: $f-text;
+        @include laptop {
+            font-size: 18px;
+        }
+        i {
+            color: $black;
+        }
+    }
+    input {
+        width: 100%;
+        background-color: $white;
+        padding: 20px 55px;
+        border: 1px solid $grey;
+        border-radius: 10px;
+        outline: none;
+        font-size: $f-text;
+        @include laptop {
+            font-size: 18px;
+            padding: 20px 65px;
+        }
+    }
+}
+
+.items {
+    a {
+        display: block;
+        margin-bottom: 20px;
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: $grey;
+            padding: 20px 30px;
+            border-radius: 10px;
+            div {
+                display: flex;
+                align-items: center;
+                img {
+                    width: 50px;
+                    border-radius: 50%;
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+}
+
+/* ============= READ TRACK ============= */
+#track {
+    background-color: $grey;
+    width: 350px;
+    height: 100vh;
+    padding: 20px;
+    margin: 0 auto;
+    @include tablet {
+        width: 400px;
+    }
+    @include laptop {
+        width: 480px;
+    }
+    i {
+        cursor: pointer;
+    }
+    .hidden {
+        opacity: 0;
+    }
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        i {
+            font-size: $f-icon-bigger;
+        }
+        .middle {
+            text-align: center;
+            .muted {
+                color: $grey-2;
+                font-size: $f-smallest;
+            }
+        }
+    }
+    .cover {
+        padding: 10px;
+        #cover_track {
+            width: 100%;
+            border-radius: 5px;
+        }
+    }
+    .controlls {
+        div:first-child {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: $f-icon-nav;
+            #play_button {
+                width: 40px;
+                height: 40px;
+                border: 1px solid $white;
+                border-radius: 50%;
+                margin: 0 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        .progress_bar {
+            width: 100%;
+            height: 3px;
+            background-color: $white;
+            margin: 20px 0;
+            #track_audio {
+                
+            }
+        }
+        .title {
+            text-align: center;
+            .muted {
+                color: $grey-2;
+            }
+        }
+        .lecture {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: $f-icon-nav;
+            div {
+                font-size: $f-icon-bigger;
+                display: flex;
+                align-items: center;
+                #play_button {
+                    font-size: 50px;
+                    margin: 0 10px;
+                }
+            }
+        }
+    }
+}
